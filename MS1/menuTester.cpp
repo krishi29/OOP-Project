@@ -1,5 +1,5 @@
 // Final Project Milestone 1 
-// Date Module
+// Menu Module
 // File	menuTester.cpp
 // Version 2.0
 // Author	Fardad Soleimanloo
