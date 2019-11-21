@@ -48,8 +48,20 @@ namespace sdds {
       int errCode()const;         // returns the error code or zero if date is valid
       const char* dateStatus()const;  // returns a string corresponding the current status of the date
       int currentYear()const;         // returns the m_CUR_YEAR value;
+	  std::istream& read(std::istream& is = std::cin);
+	  void flushKeyboard();
+	  std::ostream& write(std::ostream& os = std::cout)const;
+	  bool operator==(const Date)const;
+	  bool operator!=(const Date)const;
+	  bool operator>=(const Date)const;
+	  bool operator<=(const Date)const;
+	  bool operator<(const Date)const;
+	  bool operator>(const Date)const;
+	  int operator-(const Date)const;
+	  operator bool() const;
 
    };
-
+   istream& operator>>(istream& is, Date& d);
+   ostream& operator<<(ostream& os, const Date&);
 }
 #endif

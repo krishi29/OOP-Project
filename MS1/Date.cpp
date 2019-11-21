@@ -79,6 +79,75 @@ namespace sdds {
    bool Date::bad()const {
       return m_ErrorCode != 0;
    }
+   void Date::flushKeyboard() {
+	   char ch;
+	   do {
+		   ch = cin.get();
+	   } while (ch != '\n');
+   }
+   std::istream& Date::read(std::isstream& is) {
+	   errCode(NO_ERROR);
+	   is >> m_year;
+	   is.ignore(1);
+	   is >> m_mon;
+	   is.ignore(1);
+	   is >> m_day;
+	   if (is.fail()) {
+		   errCode(CIN_FAILED);
+		   is.clear();
+		   flushKeyboard();
+	   }
+	   else
+		   validate();
+	   return is;
+   }
 
+   std::ostream& write(std::ostream& os = std::cout)const {
+	   if (bad()) {
+		   os << "Invalid Date Object";
+	   }
+	   else
+		   os << m_year << '/' << setw(2) << setfill('0') << m_mon << '/' << setw(2) << m_day << setfill('0');
+	   return os;
+   }
+   int Date::operator-(const Date d)const {
+	   return(this->daysSince0001_1_1() - d.daysSince0001_1_1());
+
+   }
+   bool Date::operator==(const Date d)const {
+	   return(this->daysSince0001_1_1() == d.daysSince0001_1_1());
+   }
+   bool  Date::operator!=(const Date d)const {
+	   return(this->daysSince0001_1_1() != d.daysSince0001_1_1());
+
+   }
+   bool Date::operator>=(const Date d)const {
+	   return(this->daysSince0001_1_1() >= d.daysSince0001_1_1());
+   }
+   bool  Date::operator<=(const Date d)const {
+	   return(this->daysSince0001_1_1() <= d.daysSince0001_1_1());
+
+   }
+   bool Date::operator>(const Date d)const {
+	   return(this->daysSince0001_1_1() > d.daysSince0001_1_1());
+   }
+   bool  Date::operator<(const Date d)const {
+	   return(this->daysSince0001_1_1() < d.daysSince0001_1_1());
+
+   }
+   Date::operator bool()const {
+	   return(!bad());
+   }
+
+   istream& operator>>(istream& is, Date& d) {
+	   d.read(is);
+	   return is;
+
+   };
+   ostream& operator<<(ostream& os, const Date& d) {
+	   d.write(os);
+	   return os;
+
+   }
 
 }
