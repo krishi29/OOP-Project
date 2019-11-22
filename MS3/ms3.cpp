@@ -14,6 +14,7 @@
 #include <iostream>
 #include "PubRecord.h"
 #include "colors.h"
+#include "Date.h"
 using namespace std;
 using namespace sdds;
 
@@ -95,7 +96,7 @@ int main() {
       cout << col_red << "Operator== does not work correctly" << endl;
    }
    message("PubRecord, operator==(char)");
-   if (s == 'N'){ 
+   if (s == 'N'){
       cout << "Operator== works correctly" << endl;
    }
    else {
