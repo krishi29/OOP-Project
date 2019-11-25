@@ -1,7 +1,7 @@
 /***********************************************************************
 // OOP244 Project Milestone 3
 // File	ms3.cpp
-// Version 1.0
+// Version 1.2
 // Author	Fardad Soleimanloo
 // Description
 //
@@ -9,12 +9,13 @@
 // -----------------------------------------------------------
 // Name            Date            Reason
 // Fardad          2019/11/19      intial release
+// Fardad          2019/11/21      Added Date.h
+// Fardad          2019/11/25      Set inital object to Console line(69)
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #include <iostream>
 #include "PubRecord.h"
 #include "colors.h"
-#include "Date.h"
 using namespace std;
 using namespace sdds;
 
@@ -65,6 +66,7 @@ int main() {
    Newspaper p;
    Newspaper s;
    message("Printing empty PubRecord: (all prints are using copy constructor!)");
+   p.mediaType(SDDS_CONSOLE);
    print(p);
    message("Printing PubRecord");
    p = "OOP244 Daily";
@@ -96,7 +98,7 @@ int main() {
       cout << col_red << "Operator== does not work correctly" << endl;
    }
    message("PubRecord, operator==(char)");
-   if (s == 'N'){
+   if (s == 'N'){ 
       cout << "Operator== works correctly" << endl;
    }
    else {
