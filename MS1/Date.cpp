@@ -70,22 +70,8 @@ namespace sdds {
    int Date::currentYear()const {
       return m_CUR_YEAR;
    }
-   void Date::errCode(int readErrorCode) {
-      m_ErrorCode = readErrorCode;
-   }
-   int Date::errCode()const {
-      return m_ErrorCode;
-   }
-   bool Date::bad()const {
-      return m_ErrorCode != 0;
-   }
-   void Date::flushKeyboard() {
-	   char ch;
-	   do {
-		   ch = cin.get();
-	   } while (ch != '\n');
-   }
-   std::istream& Date::read(std::isstream& is) {
+   std::istream& Date::read(std::istream& is)
+   {
 	   errCode(NO_ERROR);
 	   is >> m_year;
 	   is.ignore(1);
@@ -101,10 +87,26 @@ namespace sdds {
 		   validate();
 	   return is;
    }
+   void Date::errCode(int readErrorCode) {
+      m_ErrorCode = readErrorCode;
+   }
+   int Date::errCode()const {
+      return m_ErrorCode;
+   }
+   bool Date::bad()const {
+      return m_ErrorCode != 0;
+   }
+   void Date::flushKeyboard() {
+	   char ch;
+	   do {
+		   ch = cin.get();
+	   } while (ch != '\n');
+   }
 
-   std::ostream& write(std::ostream& os = std::cout)const {
+
+   std::ostream& Date::write(std::ostream& os)const {
 	   if (bad()) {
-		   os << "Invalid Date Object";
+		   os << DATE_ERROR[m_ErrorCode];
 	   }
 	   else
 		   os << m_year << '/' << setw(2) << setfill('0') << m_mon << '/' << setw(2) << m_day << setfill('0');

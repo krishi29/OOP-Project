@@ -61,7 +61,7 @@ namespace sdds {
 	  operator bool() const;
 
    };
-   istream& operator>>(istream& is, Date& d);
-   ostream& operator<<(ostream& os, const Date&);
+   std::istream& operator>>(std::istream& is, Date& d);
+   std::ostream& operator<<(std::ostream& os, const Date&);
 }
 #endif

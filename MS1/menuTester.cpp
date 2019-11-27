@@ -19,7 +19,8 @@ void showOrder(const unsigned int* cnt, const Menu& M);
 int main() {
    unsigned int selections[3] = { 0 };
    unsigned int s;
-   Menu m1("Lunch Menu"), m2;
+   Menu m1("Lunch Menu");
+	Menu m2;
    if (!m2) {
       cout << "The " << m2 << " menu is empty" << endl;
    }
